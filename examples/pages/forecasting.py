@@ -4,6 +4,7 @@ import pyro.distributions as dist
 from mainframe import Simulator
 from mainframe.components import stochastic, deterministic
 import plotly.express as px
+from dataclasses import dataclass
 
 
 st.title("Univariate Time Series Data")
@@ -31,6 +32,7 @@ class LinearTrend(Simulator):
 ```
 """)
 
+@dataclass
 class LinearTrend(Simulator):
     num_dates = 365
     slope = 5
