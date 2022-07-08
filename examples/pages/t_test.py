@@ -58,11 +58,13 @@ class TwoSample(Simulator):
 
 
 two_sample = TwoSample(control=(control_mean, control_variance), treatment=(treatment_mean, treatment_variance), num_samples=num_samples)
+st.plotly_chart(two_sample.show())
+
+
 st.markdown("""
 ```python
 two_sample = TwoSample(control=(control_mean, control_variance), treatment=(treatment_mean, treatment_variance), num_samples=num_samples)
 ```
 """)
-st.plotly_chart(two_sample.show())
 
 st.download_button("download simulated data", data=two_sample.dataframe.to_csv().encode("utf-8"), mime="text/csv")
