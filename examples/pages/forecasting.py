@@ -49,7 +49,7 @@ class LinearTrend(Simulator):
         return data[["day", "trend"]].drop_duplicates(subset=["day"]).sort_values(by="day")
 
     def show(self):
-        return px.line(x=data.day, y=self.data.trend)
+        return px.line(x=self.data.day, y=self.data.trend)
 
 
 linear_trend = LinearTrend(num_samples=10000)
