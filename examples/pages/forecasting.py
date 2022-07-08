@@ -52,7 +52,7 @@ class LinearTrend(Simulator):
         return px.line(x=self.dataframe.day, y=self.dataframe.trend)
 
 
-linear_trend = LinearTrend(num_samples=1000)
+linear_trend = LinearTrend(num_samples=10000)
 
 st.plotly_chart(linear_trend.show())
 
