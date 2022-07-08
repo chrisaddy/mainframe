@@ -9,7 +9,8 @@ import plotly.express as px
 st.title("Univariate Time Series Data")
 
 slope = st.sidebar.slider("slope of trend", min_value=-100.0, max_value=100.0, step=0.1)
-num_samples = st.sidebar.slider("number of days", min_value = 10, max_value = 500, step=10)
+noise = st.sidebar.slider("slope of trend", min_value=1.0, max_value=100.0, step=0.1)
+num_days = st.sidebar.slider("number of days", min_value = 10, max_value = 500, step=10)
 
 
 st.write("In the simplest case, simulating a univariate time series is just adding a trend to a random walk")
@@ -52,7 +53,7 @@ class LinearTrend(Simulator):
         return px.line(x=self.dataframe.day, y=self.dataframe.trend)
 
 
-linear_trend = LinearTrend(num_samples=10000)
+linear_trend = LinearTrend(num_samples=10000, num_dates=num_days, slope=slope, noise=noise)
 
 st.plotly_chart(linear_trend.show())
 
