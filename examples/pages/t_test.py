@@ -17,6 +17,16 @@ treatment_mean = st.sidebar.slider("treatment mean", min_value = 0, max_value = 
 treatment_variance = st.sidebar.slider("treatment variance", min_value = 1, max_value = 100, step=1)
 num_samples = st.sidebar.slider("number of samples to generate", min_value = 10, max_value = 10000, step=10)
 
+st.write("In `mainframe`, models are added to `Simulator` classes. These models are, at their core, pyro models.In essence, we define a prior probability distribution over which the simulator samples")
+
+st.markdown("""
+```python
+def model(self):
+    control = stochastic("control", dist.Normal(*self.control))
+    treatment = stochastic("treatment", dist.Normal(*self.treatment))
+```
+""")
+
 
 @dataclass
 class TwoSample(Simulator):
