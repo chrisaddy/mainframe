@@ -31,10 +31,6 @@ class TwoSample(Simulator):
     def model(self):
         control = stochastic("control", dist.Normal(*self.control))
         treatment = stochastic("treatment", dist.Normal(*self.treatment))
-
-    def model(self):
-        control = stochastic("control", dist.Normal(*self.control))
-        treatment = stochastic("treatment", dist.Normal(*self.treatment))
 ```
 """)
 
