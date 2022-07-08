@@ -21,7 +21,7 @@ class TwoSample(Simulator):
         treatment = stochastic("control", dist.Normal(*self.treatment))
 
 
-two_sample = TwoSample(control=(control_mean, control_variance), (treatment_mean, treatment_variance))
+two_sample = TwoSample(control=(control_mean, control_variance), treatment=(treatment_mean, treatment_variance))
 st.markdown(two_sample.samples.head())
 
 
