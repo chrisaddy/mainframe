@@ -9,7 +9,7 @@ import plotly.express as px
 st.title("Univariate Time Series Data")
 
 slope = st.sidebar.slider("slope of trend", min_value=-100.0, max_value=100.0, step=0.1)
-noise = st.sidebar.slider("slope of trend", min_value=1.0, max_value=100.0, step=0.1)
+noise = st.sidebar.slider("noise", min_value=1.0, max_value=100.0, step=0.1)
 num_days = st.sidebar.slider("number of days", min_value = 10, max_value = 500, step=10)
 
 
