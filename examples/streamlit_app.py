@@ -15,7 +15,7 @@ control_mean = st.sidebar.slider("control mean", min_value = 0, max_value=100, s
 control_variance = st.sidebar.slider("control variance", min_value = 1, max_value=20, step=1)
 treatment_mean = st.sidebar.slider("treatment mean", min_value = 0, max_value = 100, step=1)
 treatment_variance = st.sidebar.slider("treatment variance", min_value = 1, max_value = 100, step=1)
-num_samples = st.sidebar.slider("treatment variance", min_value = 10, max_value = 10000, step=10)
+num_samples = st.sidebar.slider("number of samples to generate", min_value = 10, max_value = 10000, step=10)
 
 
 @dataclass
