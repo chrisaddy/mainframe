@@ -18,6 +18,7 @@ st.write("In the simplest case, simulating a univariate time series is just addi
 
 st.markdown("""
 ```python
+@dataclass
 class LinearTrend(Simulator):
     num_dates = 365
     slope = 5
@@ -55,7 +56,7 @@ class LinearTrend(Simulator):
         return px.line(x=self.dataframe.day, y=self.dataframe.trend)
 
 
-linear_trend = LinearTrend(num_samples=10000, num_dates=num_days, slope=slope, noise=noise)
+linear_trend = LinearTrend(num_dates=num_days, slope=slope, noise=noise)
 
 st.plotly_chart(linear_trend.show())
 
