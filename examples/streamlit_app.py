@@ -27,12 +27,13 @@ class TwoSample(Simulator):
         control = stochastic("control", dist.Normal(*self.control))
         treatment = stochastic("treatment", dist.Normal(*self.treatment))
 
+    @property
     def dataframe(self):
         return pd.DataFrame(self.samples)
 
     def show(self):
-        data = self.dataframe.melted(value_vars=["control", "treatment"])
-        return px.violin(y="value", color="variable", data=data)
+        data = self.dataframe.melt(value_vars=["control", "treatment"])
+        return px.violin(y=data.value, color=data.variable)
 
 
 two_sample = TwoSample(control=(control_mean, control_variance), treatment=(treatment_mean, treatment_variance), num_samples=num_samples)
