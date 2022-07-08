@@ -1,4 +1,5 @@
 from typing import Tuple
+import pandas as pd
 import pyro.distributions as dist
 import streamlit as st
 from mainframe import Simulator
@@ -25,7 +26,13 @@ class TwoSample(Simulator):
         control = stochastic("control", dist.Normal(*self.control))
         treatment = stochastic("treatment", dist.Normal(*self.treatment))
 
+    def dataframe(self):
+        return pd.DataFrame(self.samples)
+
+    def show(self):
+        data = self.dataframe.melted(value_vars=["control", "treatment"])
+        return px.violin(y="value", color="variable", data=data)
+
 
 two_sample = TwoSample(control=(control_mean, control_variance), treatment=(treatment_mean, treatment_variance), num_samples=num_samples)
-st.markdown(two_sample.samples)
-
+st.plotly_chart(two_sample.show())
