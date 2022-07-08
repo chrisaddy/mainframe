@@ -37,13 +37,14 @@ class LinearTrend(Simulator):
 class LinearTrend(Simulator):
     num_dates: int = 365
     slope: float = 0
+    noise: float = 1
 
     def model(self):
 
         day = stochastic("_day", dist.Uniform(0, 1))
         day = deterministic("day", (day * self.num_dates).round())
 
-        brownian = stochastic("brownian", dist.Normal(0, 10))
+        brownian = stochastic("brownian", dist.Normal(0, self.noise))
         trend = deterministic("trend", self.slope * day + brownian)
 
     @property
