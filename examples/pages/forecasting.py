@@ -39,7 +39,7 @@ class LinearTrend(Simulator):
         day = stochastic("_day", dist.Uniform(0, 1))
         day = deterministic("day", (day * self.num_dates).round())
 
-        brownian = stochastic("brownian", dist.Normal(0, 2))
+        brownian = stochastic("brownian", dist.Normal(0, 10))
         trend = deterministic("trend", self.slope * day + brownian)
 
     @property
@@ -52,7 +52,7 @@ class LinearTrend(Simulator):
         return px.line(x=self.dataframe.day, y=self.dataframe.trend)
 
 
-linear_trend = LinearTrend(num_samples=10000)
+linear_trend = LinearTrend(num_samples=1000)
 
 st.plotly_chart(linear_trend.show())
 
