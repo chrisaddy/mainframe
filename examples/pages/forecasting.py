@@ -25,11 +25,12 @@ class LinearTrend(Simulator):
 
     @property
     def dataframe(self):
-        return pd.DataFrame(self.samples)
+        data = pd.DataFrame(self.samples)
+
+        return data[["day", "trend"]].drop_duplicates(subset=["day"]).sort_values(by="day")
 
     def show(self):
-        data = self.dataframe.melt(value_vars=["trend"])
-        return px.line(y=data.value, color=data.variable)
+        return px.line(x=data.day, y=self.data.trend)
 
 
 linear_trend = LinearTrend(num_samples=10000)
