@@ -11,6 +11,25 @@ st.title("Univariate Time Series Data")
 slope = st.sidebar.slider("slope of trend", min_value=-100.0, max_value=100.0, step=0.1)
 num_samples = st.sidebar.slider("number of days", min_value = 10, max_value = 500, step=10)
 
+
+st.write("In the simplest case, simulating a univariate time series is just adding a trend to a random walk")
+
+st.markdown("""
+```python
+class LinearTrend(Simulator):
+    num_dates = 365
+    slope = 5
+
+    def model(self):
+
+        day = stochastic("_day", dist.Uniform(0, 1))
+        day = deterministic("day", (day * self.num_dates).round())
+
+        brownian = stochastic("brownian", dist.Normal(0, 2))
+        trend = deterministic("trend", self.slope * day + brownian)
+```
+""")
+
 class LinearTrend(Simulator):
     num_dates = 365
     slope = 5
@@ -34,4 +53,7 @@ class LinearTrend(Simulator):
 
 
 linear_trend = LinearTrend(num_samples=10000)
-st.dataframe(linear_trend.dataframe)
+
+st.plotly_chart(linear_trend.show())
+
+st.download_button("download simulated data", data=linear_trend.dataframe.to_csv().encode("utf-8"), mime="text/csv")
