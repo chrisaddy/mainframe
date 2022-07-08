@@ -59,7 +59,9 @@ st.plotly_chart(two_sample.show())
 
 st.markdown("""
 ```python
-two_sample = TwoSample(control=(control_mean, control_variance), treatment=(treatment_mean, treatment_variance), num_samples=num_samples)
+two_sample = TwoSample(
+    control=(control_mean, control_variance),
+    treatment=(treatment_mean, treatment_variance), num_samples=num_samples)
 ```
 """)
 
