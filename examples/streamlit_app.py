@@ -2,6 +2,7 @@ from typing import Tuple
 import streamlit as st
 from mainframe import Simulator
 from mainframe.components import stochastic, deterministic
+from dataclasses import dataclass
 
 
 st.title("Simulate Data for a Two-Sample T-Test")
@@ -13,6 +14,7 @@ treatment_mean = st.sidebar.slider("treatment mean", min_value = 0, max_value = 
 treatment_variance = st.sidebar.slider("treatment variance", min_value = 0, max_value = 100, step=1)
 
 
+@dataclass
 class TwoSample(Simulator):
     control: Tuple[float, float]
     treatment: Tuple[float, float]
