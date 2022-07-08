@@ -51,7 +51,7 @@ class LinearTrend(Simulator):
     def dataframe(self):
         data = pd.DataFrame(self.samples)
 
-        return data[["day", "trend"]].drop_duplicates(subset=["day"]).sort_values(by="day")
+        return data[["day", "trend"]].drop_duplicates(subset=["day"]).sort_values(by="day").dropna()
 
     def show(self):
         return px.line(x=self.dataframe.day, y=self.dataframe.trend)
