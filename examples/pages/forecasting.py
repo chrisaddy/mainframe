@@ -35,8 +35,8 @@ class LinearTrend(Simulator):
 
 @dataclass
 class LinearTrend(Simulator):
-    num_dates = 365
-    slope = 5
+    num_dates: int = 365
+    slope: float = 0
 
     def model(self):
 
