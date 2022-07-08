@@ -5,6 +5,7 @@ import streamlit as st
 from mainframe import Simulator
 from mainframe.components import stochastic, deterministic
 from dataclasses import dataclass
+import plotly.express as px
 
 
 st.title("Simulate Data for a Two-Sample T-Test")
