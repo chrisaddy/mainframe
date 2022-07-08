@@ -8,7 +8,7 @@ import plotly.express as px
 
 st.title("Univariate Time Series Data")
 
-slope = st.sidebar("slope of trend", min_value=-100, max_value=100)
+slope = st.sidebar.slider("slope of trend", min_value=-100, max_value=100, step=0.1, default=1)
 num_samples = st.sidebar.slider("number of days", min_value = 10, max_value = 500, step=10, default=365)
 
 class LinearTrend(Simulator):
