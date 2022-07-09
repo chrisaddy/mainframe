@@ -1,0 +1,9 @@
+site_name: mainframe
+name:
+  - Introduction: index.md
+theme: material
+remote-theme: material
+markdown-extensions:
+  - admonition
+  - codehilite
+  - mkautodoc
